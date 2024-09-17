@@ -23,6 +23,7 @@ function UserBtn() {
     const user : userType = res.userData;
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const [isLoading, setIsLoading] = useState(false);
 
     const [isVisible, setIsVisible] = useState(false);
 
@@ -34,23 +35,31 @@ function UserBtn() {
 
     const toggleDropdown = () => setIsVisible(prev => !prev);
 
-    const handleLogout = async () => {
-        try {
+    const handleLogout = () => {
+
+        setIsLoading(true);
+
+        (async () => {
+            try {
             const res = await GetLogOut();
 
-            if (res?.status === "success") {
-                toast.success("User Logged Out");
-                navigate("/auth");
-                dispatch(logout());
-            }
+                if (res?.status === "success") {
+                    toast.success("User Logged Out");
+                    navigate("/auth");
+                    dispatch(logout());
+                }
 
-        } catch (error) {
-            if(axios.isAxiosError(error)){
-                toast.error(error.response?.data.errMsgs.otherErr);
-            } else {
-                toast.error("Couldn't logout User");
+            } catch (error) {
+                if(axios.isAxiosError(error)){
+                    toast.error(error.response?.data.errMsgs.otherErr);
+                } else {
+                    toast.error("Couldn't logout User");
+                }
+            } finally {
+                setIsLoading(false);
             }
-        }
+        })()
+        
     }
 
     useEffect(() => {
@@ -85,9 +94,9 @@ function UserBtn() {
                 onClick={toggleDropdown} 
                 className="realtive"> 
                     {user?.img ? 
-                            (<UserAvatar src={user.img} />) 
+                            (<UserAvatar src={user.img} isLoading={isLoading} />) 
                             : 
-                            (<UserAvatar src="https://github.com/shadcn.png" />
+                            (<UserAvatar src="https://github.com/shadcn.png" isLoading={isLoading} />
                         )}
                     <ul 
                         ref={dropdownRef}
