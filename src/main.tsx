@@ -18,11 +18,18 @@ const router = createBrowserRouter([
     children : [
       {
         path : '/',
-        element : <Home />
+        element : (<ProtectRoutes>
+                    <Home />
+                  </ProtectRoutes>
+        )
       },
       {
         path : '/auth',
-        element : <Auth />
+        element : (
+          <ProtectRoutes>
+            <Auth />
+          </ProtectRoutes>
+        )
       },
       {
         path : '/content',

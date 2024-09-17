@@ -38,7 +38,7 @@ function UserBtn() {
         try {
             const res = await GetLogOut();
 
-            if (res.status === "success") {
+            if (res?.status === "success") {
                 toast.success("User Logged Out");
                 navigate("/auth");
                 dispatch(logout());
@@ -92,7 +92,7 @@ function UserBtn() {
                     <ul 
                         ref={dropdownRef}
                         className={`${isVisible ? "opacity-100 visible" : "opacity-0 invisible"} transition-opacity duration-150 ease-linear absolute right-4 border-2 dark:border-0 p-2 rounded-lg text-left font-thin leading-8 bg-white dark:bg-neutral-600`}>
-                        <li className="flex items-center gap-2 pl-2 pr-2 rounded-md hover:bg-neutral-200 dark:hover:bg-neutral-500"><User className="w-4"/> Profile</li>
+                        <li><button onClick={() => navigate("/content")} className="flex items-center gap-2 pl-2 pr-2 rounded-md hover:bg-neutral-200 dark:hover:bg-neutral-500"><User className="w-4"/> Profile</button></li>
                         <li><button className="flex items-center pl-2 pr-2 rounded-md hover:bg-neutral-200 dark:hover:bg-neutral-500 gap-2" onClick={handleLogout}><LogOut className="w-4"/>Logout</button></li>
                     </ul>
                 </button>
