@@ -41,7 +41,8 @@ export default async function PostSignIn( formData : props) {
                 username: formData.username,
                 password : formData.password,
             },
-            {
+            {   
+                withCredentials : true,
                 headers: { 'Content-Type': 'application/json' }
             }
         );
@@ -61,8 +62,7 @@ export default async function PostSignIn( formData : props) {
                 }
             };
         } else {
-            const toastErr = () => toast("An unkown error occured");
-            toastErr();
+            toast.error("An unkown error occured");
         }
     }
 }
