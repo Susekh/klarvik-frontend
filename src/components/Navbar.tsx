@@ -8,7 +8,7 @@ type props = {
 
 function Navbar({isDark , setIsDark} : props) {
   return (
-    <div className=" dark:bg-neutral-800 dark:text-white p-2 pl-4 pr-4 flex justify-between items-center duration-500 border-b-2">
+    <div className=" dark:bg-neutral-800 bg-gray-100 dark:text-white p-2 pl-4 pr-4 flex justify-between items-center duration-500 border-b-2">
       LOGO
       <div className="flex gap-8">
         <ThemeToggler isDark={isDark} setIsDark={setIsDark}/>
