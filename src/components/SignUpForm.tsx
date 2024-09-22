@@ -17,6 +17,7 @@ import PostSignUp from "@/auth/PostSignUp"
 import { Eye, EyeOff } from "lucide-react"
 import { useNavigate } from "react-router-dom"
 import toast from "react-hot-toast"
+import OauthOptions from "./OauthOptions"
 
 type props = {
   setIsSignIn : (isSignIn : boolean) => void,
@@ -111,6 +112,7 @@ function SignUpForm({setIsSignIn} : props) {
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <p className=" text-center font-thin">Please fill in the details to get started.</p>
+        <OauthOptions/>
         <FormField
           control={form.control}
           name="username"

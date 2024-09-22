@@ -9,6 +9,7 @@ import Auth from './pages/Auth.tsx'
 import ProtectRoutes from './components/ProtectRoutes.tsx'
 import { Provider } from 'react-redux'
 import store from './store/store.ts'
+import AuthLoader from './components/AuthLoader.tsx'
 
 
 const router = createBrowserRouter([
@@ -17,7 +18,7 @@ const router = createBrowserRouter([
     element : <App />,
     children : [
       {
-        path : '/',
+        index : true,
         element : (<ProtectRoutes>
                     <Home />
                   </ProtectRoutes>
@@ -29,7 +30,16 @@ const router = createBrowserRouter([
           <ProtectRoutes>
             <Auth />
           </ProtectRoutes>
-        )
+        ),
+      },
+      {
+        path: 'auth/oauth',
+        children : [
+          {
+            path: 'github',
+            element : <AuthLoader/>
+          }
+        ]
       },
       {
         path : '/content',
@@ -38,7 +48,7 @@ const router = createBrowserRouter([
             <ContentPage />
           </ProtectRoutes>
         )
-      }
+      },
     ]
   }
 ])

@@ -18,6 +18,7 @@ import PostSignIn from "@/auth/PostSignIn"
 import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { login } from "@/store/userSlice"
+import OauthOptions from "./OauthOptions"
 
 type props = {
   setIsSignIn : (isSignIn : boolean) => void,
@@ -108,6 +109,7 @@ function SignInForm({setIsSignIn} : props) {
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <p className=" text-center font-thin">Please Sign in to continue</p>
+        <OauthOptions/>
         <FormField
           control={form.control}
           name="username"
