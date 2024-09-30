@@ -1,4 +1,4 @@
-import { StrictMode } from 'react'
+
 import { createRoot } from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
@@ -9,7 +9,7 @@ import Auth from './pages/Auth.tsx'
 import ProtectRoutes from './components/ProtectRoutes.tsx'
 import { Provider } from 'react-redux'
 import store from './store/store.ts'
-import AuthLoader from './components/AuthLoader.tsx'
+import HandleGithubOauth from './components/HandleGithubOauth.tsx'
 
 
 const router = createBrowserRouter([
@@ -37,7 +37,7 @@ const router = createBrowserRouter([
         children : [
           {
             path: 'github',
-            element : <AuthLoader/>
+            element : <HandleGithubOauth/>
           }
         ]
       },
@@ -54,9 +54,9 @@ const router = createBrowserRouter([
 ])
 
 createRoot(document.getElementById('root')!).render(
-  <StrictMode>
+  <>
     <Provider store={store}>
       <RouterProvider router={router} />
     </Provider>
-  </StrictMode>
+  </>
 )

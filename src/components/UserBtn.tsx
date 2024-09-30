@@ -43,11 +43,11 @@ function UserBtn() {
             try {
             const res = await GetLogOut();
 
-                if (res?.status === "success") {
-                    toast.success("User Logged Out");
-                    navigate("/auth");
-                    dispatch(logout());
-                }
+            if (res?.status === "success") {
+                toast.success("User Logged Out");
+                navigate("/auth");
+                dispatch(logout());
+            }
 
             } catch (error) {
                 if(axios.isAxiosError(error)){
