@@ -1,7 +1,9 @@
 import conf from "@/conf/conf";
 import axios from "axios";
 import { useEffect } from "react";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import AuthShimmer from "./loaders/shimmers/AuthShimmer";
 
 
 
@@ -31,6 +33,7 @@ function HandleGoogleOauth() {
             }
           } catch (error) {
             console.error("Error during Google OAuth:", error);
+            toast.error("Error while authenticating through Google")
             navigate('/auth');
           }
         };
@@ -41,7 +44,7 @@ function HandleGoogleOauth() {
     }, [navigate]);
 
   return (
-    <div>Loading ...</div>
+    <AuthShimmer/>
   )
 }
 

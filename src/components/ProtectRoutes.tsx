@@ -4,6 +4,7 @@ import { login, logout } from '@/store/userSlice';
 import { ReactNode, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
+import ContentShimmer from './loaders/shimmers/ContentShimmer';
 
 type props = {
     children : ReactNode
@@ -57,7 +58,7 @@ function ProtectRoutes({children} : props) {
     checkAuthentication();
 }, [user.status, navigate, location.pathname, dispatch]);
 
-  return <>{loading ? <p>loading..</p> : children}</>;
+  return <>{loading ? <ContentShimmer/> : children}</>;
 }
 
 export default ProtectRoutes

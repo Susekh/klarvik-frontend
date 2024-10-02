@@ -11,6 +11,7 @@ import { Provider } from 'react-redux'
 import store from './store/store.ts'
 import HandleGithubOauth from './components/HandleGithubOauth.tsx'
 import HandleGoogleOauth from './components/HandleGoogleOauth.tsx'
+import ContentShimmer from './components/loaders/shimmers/ContentShimmer.tsx'
 
 
 const router = createBrowserRouter([
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path : '/shop',
+        element : <ContentShimmer/>
+      },
+      {
         path: 'auth/oauth',
         children : [
           {
@@ -43,7 +48,7 @@ const router = createBrowserRouter([
           {
             path : 'google',
             element : <HandleGoogleOauth/>
-          }
+          },
         ]
       },
       {

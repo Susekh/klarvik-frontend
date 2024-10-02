@@ -1,9 +1,11 @@
+import conf from "@/conf/conf";
+
 export default function getGoogleOauthUrl() {
     const rootUrl = "https://accounts.google.com/o/oauth2/v2/auth";
 
     const options = {
-        redirect_uri : 'http://localhost:5173/auth/oauth/google',
-        client_id : '498337021457-r844fqnrckugnsb38orhqucmud8pl6gr.apps.googleusercontent.com',
+        redirect_uri : conf.redirectUriGoogle,
+        client_id : conf.clientIdGoogle,
         access_type : 'offline',
         response_type : "code",
         prompt : "consent",
@@ -12,14 +14,8 @@ export default function getGoogleOauthUrl() {
             'https://www.googleapis.com/auth/userinfo.email'
         ].join(" "),
     };
-
-    console.log("options :: ",options);
     
-
     const qs = new URLSearchParams(options);
-
-    console.log("qs ::", qs);
-    
     
     return `${rootUrl}?${qs.toString()}`;
 }
