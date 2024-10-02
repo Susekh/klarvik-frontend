@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 
 
-function HandleGithubOauth() {
+function HandleGoogleOauth() {
 
   const navigate = useNavigate();
     
@@ -14,10 +14,10 @@ function HandleGithubOauth() {
         const urlParams = new URLSearchParams(queryString);
         const codeParam = urlParams.get("code");
         
-        const handleGithubAuth = async () => {
+        const handleGoogleAuth = async () => {
           try {
             const response = await axios.post(
-              `${conf.backendUrl}/auth/Oauth/github`,
+              `${conf.backendUrl}/auth/Oauth/google`,
               { code: codeParam },
               {
                 withCredentials: true,
@@ -30,12 +30,12 @@ function HandleGithubOauth() {
               navigate('/');
             }
           } catch (error) {
-            console.error("Error during GitHub OAuth:", error);
+            console.error("Error during Google OAuth:", error);
             navigate('/auth');
           }
         };
     
-        handleGithubAuth();
+        handleGoogleAuth();
 
 
     }, [navigate]);
@@ -45,4 +45,4 @@ function HandleGithubOauth() {
   )
 }
 
-export default HandleGithubOauth
+export default HandleGoogleOauth

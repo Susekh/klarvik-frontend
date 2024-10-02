@@ -13,7 +13,7 @@ type userType = {
     id : number,
     createdAt : Date,
     username : string,
-    img? : string,
+    imgUrl : string,
     email? : string,
 }
 
@@ -93,8 +93,8 @@ function UserBtn() {
                 ref={buttonRef}
                 onClick={toggleDropdown} 
                 className="realtive"> 
-                    {user?.img ? 
-                            (<UserAvatar src={user.img} isLoading={isLoading} />) 
+                    {user?.imgUrl ? 
+                            (<UserAvatar src={user.imgUrl} isLoading={isLoading} />) 
                             : 
                             (<UserAvatar src="https://github.com/shadcn.png" isLoading={isLoading} />
                         )}

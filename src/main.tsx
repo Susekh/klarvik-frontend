@@ -10,6 +10,7 @@ import ProtectRoutes from './components/ProtectRoutes.tsx'
 import { Provider } from 'react-redux'
 import store from './store/store.ts'
 import HandleGithubOauth from './components/HandleGithubOauth.tsx'
+import HandleGoogleOauth from './components/HandleGoogleOauth.tsx'
 
 
 const router = createBrowserRouter([
@@ -37,7 +38,11 @@ const router = createBrowserRouter([
         children : [
           {
             path: 'github',
-            element : <HandleGithubOauth/>
+            element : (<HandleGithubOauth/>)
+          },
+          {
+            path : 'google',
+            element : <HandleGoogleOauth/>
           }
         ]
       },
