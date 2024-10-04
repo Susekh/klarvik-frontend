@@ -7,17 +7,30 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import ContentShimmer from './loaders/shimmers/ContentShimmer';
 
 type props = {
-    children : ReactNode
+    children : ReactNode,
+    isProtected : boolean
+}
+type userType = {
+    id : number,
+    createdAt : Date,
+    username : string,
+    imgUrl? : string,
+    email? : string,
 }
 
-function ProtectRoutes({children} : props) {
+type UserLoggedInResponse = {
+    status : boolean,
+    userData : userType,
+}
+
+function ProtectRoutes( {children, isProtected} : props) {
 
   /*
   - check if user is logged in by verifying jwt tokens then populate slices in store
   - if not logged in redirect to auth page
   */
 
-  const user = useSelector((store : RootState) => store.user);
+  const user : UserLoggedInResponse = useSelector((store : RootState) => store.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
@@ -38,27 +51,43 @@ function ProtectRoutes({children} : props) {
             }
         } 
 
-        // Handle redirection based on authentication status and current path
-        if (user.status) {
-            if (location.pathname === '/auth') {
-                navigate('/');
-            } else {
-                setLoading(false);
-            }
-        } 
-        if(!user.status) {
-            if (location.pathname !== '/auth') {
-                navigate('/auth');
-            } else {
-                setLoading(false);
+        console.log("userStatus ::", user.status);
+        
+        
+        console.log('pathName ::', location.pathname);
+
+        if(isProtected){
+            // Handle redirection based on authentication status and current path
+            if (user.status) {
+                if (location.pathname === '/auth') {
+                    navigate('/profile');
+                } else {
+                    setLoading(false);
+                }
+            } 
+            if(!user.status) {
+                if (location.pathname !== '/auth') {
+                    navigate('/auth');
+                } else {
+                    setLoading(false);
+                }
             }
         }
     };
 
-    checkAuthentication();
-}, [user.status, navigate, location.pathname, dispatch]);
+    if (isProtected) {
+        checkAuthentication();
+    } else {
+        setLoading(false); 
+    }
+}, [user.status,isProtected, navigate, location.pathname, dispatch]);
 
-  return <>{loading ? <ContentShimmer/> : children}</>;
+
+    if (isProtected && loading) {
+        return <ContentShimmer />;
+    }
+
+    return <>{children}</>;
 }
 
 export default ProtectRoutes

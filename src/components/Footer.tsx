@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 function Footer() {
   return (
-    <section className="overflow-hidden lg:p-12 lg:px-24 border bg-gray-100 dark:bg-neutral-800 border-t-2">
+    <section className="overflow-hidden mt-auto lg:p-12 lg:px-24 border bg-gray-100 dark:bg-neutral-800 border-t-2">
             <div className="">
                 <div className="flex flex-wrap">
                     <div className="w-full p-6 md:w-1/2 lg:w-5/12">

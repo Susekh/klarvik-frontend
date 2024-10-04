@@ -4,7 +4,7 @@ import { UserRound } from "lucide-react";
 const UserAvatar = ({ src, isLoading } : {src : string, isLoading? : boolean}) => 
     (
         <Avatar className={ isLoading ? "animate-pulse" : ""}>
-            <AvatarImage src={src} />
+            <AvatarImage src={src} referrerPolicy="no-referrer" />
             <AvatarFallback><UserRound/></AvatarFallback>
         </Avatar>
     );

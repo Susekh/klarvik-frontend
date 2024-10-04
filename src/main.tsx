@@ -12,6 +12,7 @@ import store from './store/store.ts'
 import HandleGithubOauth from './components/HandleGithubOauth.tsx'
 import HandleGoogleOauth from './components/HandleGoogleOauth.tsx'
 import ContentShimmer from './components/loaders/shimmers/ContentShimmer.tsx'
+import Profile from './pages/Profile.tsx'
 
 
 const router = createBrowserRouter([
@@ -21,22 +22,35 @@ const router = createBrowserRouter([
     children : [
       {
         index : true,
-        element : (<ProtectRoutes>
-                    <Home />
-                  </ProtectRoutes>
-        )
+        element : (
+        <ProtectRoutes isProtected={false}>
+          <Home />
+        </ProtectRoutes>
+      )
       },
       {
         path : '/auth',
         element : (
-          <ProtectRoutes>
+          <ProtectRoutes isProtected={true}>
             <Auth />
           </ProtectRoutes>
         ),
       },
       {
         path : '/shop',
-        element : <ContentShimmer/>
+        element : (
+        <ProtectRoutes isProtected={true}>
+          <ContentShimmer/>
+        </ProtectRoutes>
+        )
+      },
+      {
+        path : '/profile',
+        element : (
+          <ProtectRoutes isProtected={true}>
+            <Profile/>
+          </ProtectRoutes>
+        )//Todo : show option to change password or set password if they are logged in using oauth -> also option to edit other details
       },
       {
         path: 'auth/oauth',
@@ -54,7 +68,7 @@ const router = createBrowserRouter([
       {
         path : '/content',
         element : (
-          <ProtectRoutes>
+          <ProtectRoutes isProtected={true}>
             <ContentPage />
           </ProtectRoutes>
         )

@@ -29,7 +29,7 @@ function HandleGoogleOauth() {
             const res = response.data;
 
             if (res.statusCode === 201) {
-              navigate('/');
+              navigate('/profile');
             }
           } catch (error) {
             console.error("Error during Google OAuth:", error);

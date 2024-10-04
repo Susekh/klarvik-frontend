@@ -4,10 +4,14 @@ import { useEffect } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import AuthShimmer from "./loaders/shimmers/AuthShimmer";
+import { useDispatch } from "react-redux";
+import { login } from "@/store/userSlice";
 
 
 
 function HandleGithubOauth() {
+
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
     
@@ -29,7 +33,8 @@ function HandleGithubOauth() {
             const res = response.data;
 
             if (res.statusCode === 201) {
-              navigate('/');
+              dispatch(login(res.user));
+              navigate('/profile');
             }
           } catch (error) {
             console.error("Error during GitHub OAuth:", error);
@@ -40,8 +45,7 @@ function HandleGithubOauth() {
     
         handleGithubAuth();
 
-
-    }, [navigate]);
+    }, [navigate, dispatch]);
 
   return (
     <AuthShimmer/>

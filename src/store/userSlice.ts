@@ -5,6 +5,7 @@ type UserType = {
     id: number;
     createdAt: Date;
     username: string;
+    name : string;
     imgUrl: string;
     email: string;
 };
@@ -19,6 +20,7 @@ const initialState: {
         id: 0,
         createdAt: new Date(0),
         username: "",
+        name : "",
         imgUrl: "https://github.com/shadcn.png",
         email: "",
     },

@@ -10,7 +10,7 @@ function App() {
   const [isDark, setIsDark] = useState(false);
 
   return (
-    <div className={isDark ? "dark" : " " }>
+    <div className={`${isDark ? "dark" : " "} min-h-screen flex flex-col` }>
       <Navbar isDark={isDark} setIsDark={setIsDark} />
         <main>
           <Outlet/>

@@ -5,7 +5,7 @@ type userType = {
     id : number,
     createdAt : Date,
     username : string,
-    img? : string,
+    imgUrl? : string,
     email? : string,
 }
 

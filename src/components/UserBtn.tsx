@@ -93,7 +93,7 @@ function UserBtn() {
                 ref={buttonRef}
                 onClick={toggleDropdown} 
                 className="realtive"> 
-                    {user?.imgUrl ? 
+                    {user.imgUrl ? 
                             (<UserAvatar src={user.imgUrl} isLoading={isLoading} />) 
                             : 
                             (<UserAvatar src="https://github.com/shadcn.png" isLoading={isLoading} />
@@ -101,7 +101,7 @@ function UserBtn() {
                     <ul 
                         ref={dropdownRef}
                         className={`${isVisible ? "opacity-100 visible" : "opacity-0 invisible"} transition-opacity duration-150 ease-linear absolute right-4 border-2 dark:border-0 p-2 rounded-lg text-left font-thin leading-8 bg-white dark:bg-neutral-600`}>
-                        <li><button onClick={() => navigate("/content")} className="flex items-center gap-2 pl-2 pr-2 rounded-md hover:bg-neutral-200 dark:hover:bg-neutral-500"><User className="w-4"/> Profile</button></li>
+                        <li><button onClick={() => navigate("/profile")} className="flex items-center gap-2 pl-2 pr-2 rounded-md hover:bg-neutral-200 dark:hover:bg-neutral-500"><User className="w-4"/> Profile </button></li>
                         <li><button className="flex items-center pl-2 pr-2 rounded-md hover:bg-neutral-200 dark:hover:bg-neutral-500 gap-2" onClick={handleLogout}><LogOut className="w-4"/>Logout</button></li>
                     </ul>
                 </button>
