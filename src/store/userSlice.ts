@@ -1,5 +1,58 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+type task = {
+    id : string;
+    name : string;
+    content : string;
+    deadline : string;
+    sprintId : string;
+}
+
+type sprint = {
+    id : string;
+    name : string;
+    projectId : string;
+    startDate : string;
+    endDate : string;
+    status : string;
+    tasks : task[];
+}
+
+type issue = {
+    id : string;
+    name : string;
+    description : string;
+    status : string;
+    order : number;
+    assigneeId : string;
+}
+
+type message = {
+    id : string;
+    content : string;
+    fileUrl? : string;
+    taskId : string;
+    deleted : boolean;
+    memberId : string;
+}
+
+type member = {
+    id : string;
+    role : string;
+    projectId : string;
+    taskId : string;
+    assignedIssues : issue[];
+    messages : message[];
+}
+
+type project = {
+    id : string;
+    name : string;
+    imageUrl : string;
+    members : member[];
+    sprints? : sprint[];
+}
+
 
 type UserType = {
     id: number;
@@ -8,6 +61,8 @@ type UserType = {
     name : string;
     imgUrl: string;
     email: string;
+    projects? : project[];
+    members? : member[];
 };
 
 

@@ -13,6 +13,12 @@ import HandleGithubOauth from './components/HandleGithubOauth.tsx'
 import HandleGoogleOauth from './components/HandleGoogleOauth.tsx'
 import ContentShimmer from './components/loaders/shimmers/ContentShimmer.tsx'
 import Profile from './pages/Profile.tsx'
+import ForgotPassword from './pages/ForgotPassword.tsx'
+import ResetPassword from './pages/ResetPassword.tsx'
+import EditProfile from './pages/EditProfile.tsx'
+import Dashboard from './pages/Dashboard.tsx'
+import Project from './components/projects/Project.tsx'
+import Sprint from './components/sprints/Sprint.tsx'
 
 
 const router = createBrowserRouter([
@@ -34,7 +40,23 @@ const router = createBrowserRouter([
           <ProtectRoutes isProtected={true}>
             <Auth />
           </ProtectRoutes>
-        ),
+        )
+      },
+      {
+        path : '/dashboard',
+        element : (
+          <ProtectRoutes isProtected={true}>
+            <Dashboard/>
+          </ProtectRoutes>
+        )
+      },
+      {
+        path : '/auth/forgot-password',
+        element : <ForgotPassword/>
+      },
+      {
+        path : '/auth/reset-password/:token',
+        element : <ResetPassword/>
       },
       {
         path : '/shop',
@@ -51,6 +73,30 @@ const router = createBrowserRouter([
             <Profile/>
           </ProtectRoutes>
         )//Todo : show option to change password or set password if they are logged in using oauth -> also option to edit other details
+      },
+      {
+        path : '/profile/edit',
+        element : (
+          <ProtectRoutes isProtected={true} >
+            <EditProfile/>
+          </ProtectRoutes>
+        )
+      },
+      {
+        path: '/projects/:projectId',
+        element: (
+          <ProtectRoutes isProtected={true}>
+            <Project />
+          </ProtectRoutes>
+        ),
+      },
+      {
+        path: '/projects/:projectId/sprints/:sprintId',
+        element: (
+          <ProtectRoutes isProtected={true}>
+            <Sprint />
+          </ProtectRoutes>
+        ),
       },
       {
         path: 'auth/oauth',
