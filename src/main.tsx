@@ -100,6 +100,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'auth/oauth',
+        element: null,
         children : [
           {
             path: 'github',
