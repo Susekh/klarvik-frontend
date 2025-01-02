@@ -28,7 +28,7 @@ function Sprint() {
       // Call the API to create the column
       const res = await callApiPost(
         `${conf.backendUrl}/create/column/newColumn`,
-        { sprintId, name: "Todo" } // Default column name "Todo"
+        { sprintId, name: "Task" } // Default column name "Todo"
       );
   
       // Check the response and update the state
@@ -46,35 +46,35 @@ function Sprint() {
 
   // Handle loading and error states
   if (isLoading) return <ContentShimmer />;
-  if (error) return <p>Error: {error.message || "An error occurred."}</p>;
+  if (error) return <p>Error: {error.message || "An error occuryellow."}</p>;
 
   return (
     <section className="dark:bg-neutral-800 dark:text-white px-8 py-2 h-full">
-      <h1 className="text-2xl mb-2 font-semibold">Sprint Details</h1>
+      <h1 className="text-2xl mb-2 font-semibold">Session Details</h1>
       {sprint ? (
         <div>
           <h2 className="text-lg font-medium">{sprint.name}</h2>
-          <p>{`Sprint ID: ${sprintId}`}</p>
-          <p>{`Start Date: ${new Date(sprint.startDate).toLocaleDateString()}`}</p>
+          <p>{`Session ID: ${sprintId}`}</p>
+          <p>{`Session Date: ${new Date(sprint.startDate).toLocaleDateString()}`}</p>
           <p>{`End Date: ${new Date(sprint.endDate).toLocaleDateString()}`}</p>
           <p>{`Status: ${sprint.status}`}</p>
           <div className="mt-4">
-            <h3 className="text-md font-semibold">Columns:</h3>
+            <h3 className="text-md font-semibold">Tasks :</h3>
               {
               sprint.columns.length ? 
-              <Columns setSprint={setSprint} columns={sprint.columns} projectId={sprint.projectId} /> : (
-                <p>No columns available.</p>
+              <Columns setSprint={setSprint}  columns={sprint.columns}  projectId={sprint.projectId} /> : (
+                <p>No Task available.</p>
               )}
             <button
               onClick={CreateColumn}
-              className="bg-red-500 p-2 text-white rounded-lg mt-4"
+              className="bg-yellow-500 p-2 text-white rounded-lg mt-4"
             >
-              Create Column
+              Add Task
             </button>
           </div>
         </div>
       ) : (
-        <p>No sprint data available.</p>
+        <p>No Sessions data available.</p>
       )}
     </section>
   );

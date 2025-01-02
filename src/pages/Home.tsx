@@ -2,11 +2,9 @@ import { Check } from "lucide-react"
 import { Link } from "react-router-dom";
 
 const featureList = [
-  { id: 1, content: 'Quick Project Setup' },
-  { id: 2, content: 'Effortless Task Management' },
-  { id: 3, content: 'Team Collaboration Made Simple' },
-  { id : 4, content : 'Seamless Project Tracking'},
-  { id : 5, content : 'Integrated Payment Gateways'}
+  { id: 1, content: 'Real-Time Health Monitoring' },
+  { id: 2, content: 'Centralized Situational Monitoring' },
+  { id: 3, content: 'Prediction of Accidents using AI' },
 ];
 
 
@@ -17,10 +15,10 @@ function Home() {
       <div className="p-12 flex flex-wrap items-center justify-center gap-24">
         <div className="flex flex-col flex-wrap gap-12 justify-center text-center md:text-left md:justify-start">
           <h1 className="text-yellow-500 flex flex-col flex-wrap text-4xl md:text-6xl max-w-4xl font-extrabold">
-          Your All-in-One Project Management <span className="p-1 text-white max-w-64 mt-4 bg-yellow-800">Solution</span>
+          smart mining helmets <span className="p-1 text-white max-w-64 mt-4 bg-yellow-800">Klarvik</span>
           </h1>
           <p className="md:text-lg max-w-2xl text-yellow-800 dark:text-yellow-600">
-          Streamline your team's workflow, collaborate seamlessly, and manage tasks and sprints with ease. Empower your team to deliver results faster, track progress more effectively.
+          Streamline your team's workflow, collaborate seamlessly, and manage tasks ease. Empower your team to deliver results faster, track progress more effectively.
           </p>
           <div>
             <Link to={"/dashboard"} className="rounded-md border-2 border-yellow-400 p-4 px-12 text-yellow-600  font-semibold hover:bg-yellow-500 hover:text-white uppercase duration-300">Get started</Link>

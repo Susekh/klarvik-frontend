@@ -13,32 +13,33 @@ function Dashboard() {
     }
 
   return (
-    <section className="p-2">
-        <h2 className="text-2xl text-red-600 pb-4">DASHBOARD</h2>
+    <section className="p-2  pb-32 dark:text-white dark:bg-neutral-800">
+        <h2 className="text-2xl text-yellow-600">DASHBOARD</h2>
         <div>
-        <div className="mb-4">
+        <div className="mb-8 dark:text-gray-300">
             <p>
                 {`${user.userData?.name}`}
             </p>
         </div>
         <div className="flex flex-wrap gap-4">
-            <div className="p-8 border-2 border-rose-300 rounded-lg">
+            <div className="p-8 border-2 text-black border-yellow-300 rounded-lg">
                 <ul className="flex flex-col gap-2">
                 {
                     user.userData?.projects ?  
                     user.userData.projects.map(project => 
                         { return <li>
-                                <p onClick={() => handleProjectClick(project.id)} className="bg-rose-200 p-4 cursor-pointer">{project?.name}</p>
+                                
+                                <p onClick={() => handleProjectClick(project.id)} className="bg-yellow-200 rounded-lg hover:bg-yellow-100 p-4 cursor-pointer">{project?.name}</p>
                                 </li> }) : 
                         <p>No Projects</p>
                 }
                 </ul>
                 
                 <div>
-                    <CreateProjectModal className="bg-red-600 text-white hover:bg-red-700"/>
+                    <CreateProjectModal className="bg-yellow-600 text-white mt-4 hover:bg-yellow-700"/>
                 </div>
             </div>
-            <div className="p-8 border-2 border-rose-300 rounded-lg">
+            <div className="p-8 border-2 border-yellow-300 rounded-lg">
             {
                 user.userData?.projects && user.userData.projects.length > 0 ? (
                     user.userData.projects.map(project =>
@@ -56,7 +57,7 @@ function Dashboard() {
             }
             </div>
             {/* Issues Section */}
-            <div className="p-8 border-2 border-rose-300 rounded-lg">
+            {/* <div className="p-8 border-2 border-yellow-300 rounded-lg">
                 {user.userData?.projects?.length ? (
                     user.userData?.projects?.map((project) =>
                         project.members?.length > 0 ? (
@@ -76,7 +77,7 @@ function Dashboard() {
                 ) : (
                     <p>No active Issues</p>
                 )}
-            </div>
+            </div> */}
         </div>
         </div>
         

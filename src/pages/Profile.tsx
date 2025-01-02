@@ -18,8 +18,8 @@ function Profile() {
 
   return (
     <>
-        <div className="w-full p-12 flex items-center justify-center">
-            <div className="w-84 rounded-md p-12 bg-gray-200">
+        <div className="w-full dark:bg-neutral-700 p-12 flex items-center justify-center">
+            <div className="w-84 rounded-md p-12 dark:bg-neutral-300 bg-gray-200">
                 <ul className="flex flex-col gap-2">
                     {
                         profileList.map((elem) => <li key={elem.id}><p className=" font-bold capitalize">{elem.title}</p>{`${elem.content}`}</li>)

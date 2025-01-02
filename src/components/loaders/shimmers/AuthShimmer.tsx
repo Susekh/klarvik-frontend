@@ -1,8 +1,8 @@
 
 function AuthShimmer() {
   return (
-    <div className="p-8">
-    <div className="border border-gray-300 shadow rounded-md p-12 max-w-sm w-full mx-auto">
+    <div className="p-8 dark:bg-neutral-700">
+    <div className="border dark:bg-neutral-700 border-gray-300 shadow rounded-md p-12 max-w-sm w-full mx-auto">
       <div className="animate-pulse flex space-x-4">
         <div className="flex-1 space-y-6 py-1">
           <div className="flex-1 space-y-4 py-1">

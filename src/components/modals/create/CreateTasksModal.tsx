@@ -12,13 +12,16 @@ type Props = {
     columnId : string;
     projectId : string;
     setSprint : any;
+    setKalrCol : any;
 }
 
-function CreateTasksModal({ className, columnId, setSprint, projectId } : Props) {
+function CreateTasksModal({ className, columnId, setSprint,setKalrCol, projectId } : Props) {
 
     const [name, setName] = useState("");
     const [content, setContent] = useState("");
     const [deadline, setDeadline] = useState("");
+    const [isOpen, setIsOpen] = useState(false);
+    const [helmet, setHelmet] = useState();
 
     const createProject = async (e : FormEvent) => {
         
@@ -28,22 +31,25 @@ function CreateTasksModal({ className, columnId, setSprint, projectId } : Props)
         console.log("res from backend ::", res);
         
         setSprint(res?.data?.sprint);
+        setKalrCol(res?.data?.sprint?.columns)
 
         setName("");
         setContent("");
+
+        setIsOpen(false);
         
       };
 
   return (
     <>
-      <Dialog>
+      <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogTrigger asChild>
-          <Button className={className} variant="outline">Create Item</Button>
+          <Button className={className} variant="outline">Add worker</Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
-            <DialogTitle>Add new item</DialogTitle>
-            <DialogDescription>Fill up details for your new Item</DialogDescription>
+            <DialogTitle>Add new worker</DialogTitle>
+            <DialogDescription>Fill up details for new worker</DialogDescription>
           </DialogHeader>
           <form onSubmit={createProject} className="grid gap-4 py-4">
             <div className="grid grid-cols-4 items-center gap-4">
@@ -59,7 +65,7 @@ function CreateTasksModal({ className, columnId, setSprint, projectId } : Props)
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
                 <Label htmlFor="content" className="text-right">
-                Content
+                description
                 </Label>
                 <Input
                 id="content"
@@ -69,8 +75,19 @@ function CreateTasksModal({ className, columnId, setSprint, projectId } : Props)
                 />
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="helmet" className="text-right">
+                helmet id
+                </Label>
+                <Input
+                id="helmet"
+                value={helmet}
+                onChange={(e) => setHelmet(e.target.value)}
+                className="col-span-3"
+                />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
                 <Label htmlFor="deadline" className="text-right">
-                End Date
+                shift end
                 </Label>
                 <Input
                 id="deadline"

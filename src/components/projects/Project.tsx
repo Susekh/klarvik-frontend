@@ -32,8 +32,8 @@ function Project() {
       {data ? (
         <div>
             <div className="flex gap-2">
-              <img width={30} alt={`${project.name}`} className="image border-2 border-red-500 rounded-full w-8 h-8" src={project.imageUrl} />
-              <h2 className="px-2 py-1 bg-red-300 text-center overflow-hidden rounded-lg h-8 w-36">{project.name}</h2>
+              <img width={30} alt={`${project.name}`} className="image border-2 border-yellow-500 rounded-full w-8 h-8" src={project.imageUrl} />
+              <h2 className="px-2 py-1 bg-yellow-300 text-center overflow-hidden rounded-lg h-8 w-36">{project.name}</h2>
             </div>
             <div className="py-8">
               <div className="flex gap-4">
@@ -51,12 +51,12 @@ function Project() {
                   }
                 </ul>
                 <div className="flex border-2 p-2 flex-col gap-2">
-                <CreateSprintModal className="bg-red-600 text-white hover:bg-red-700" projectId={project.id}/>
+                <CreateSprintModal className="bg-yellow-600 text-white hover:bg-yellow-700" projectId={project.id}/>
                 <ul className="flex flex-col gap-4">
                     {
                       project?.sprints ? 
                       project.sprints.map((sprint : any) => (
-                        <li onClick={() => navigate(`sprints/${sprint.id}`)} className="border-2 bg-red-500 text-white cursor-pointer hover:bg-red-600 duration-300 p-4 rounded-md">
+                        <li onClick={() => navigate(`sprints/${sprint.id}`)} className="border-2 bg-yellow-500 text-white cursor-pointer hover:bg-yellow-600 duration-300 p-4 rounded-md">
                           <h3>{sprint.name}</h3>
                           <p>{sprint.id}</p>
                           <p>{`from ${sprint.startDate} to ${sprint.endDate}`}</p>
@@ -65,7 +65,7 @@ function Project() {
                         
                       ))
                       : 
-                      <CreateSprintModal className="bg-red-600 text-white hover:bg-red-700" projectId={project.id}/>
+                      <CreateSprintModal className="bg-yellow-600 text-white hover:bg-yellow-700" projectId={project.id}/>
                     }
                   </ul>
                 </div>

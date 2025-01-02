@@ -4,15 +4,17 @@ import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTrigger } from
 import { FormEvent, useState } from "react";
 import callApiPost from "@/utils/callApiPost";
 import conf from "@/conf/conf";
+import { LucideDelete } from "lucide-react";
 
 type Props = {
     className: string;
     taskId: string;
-    setSprint: any;
+    setSprint?: any;
+    setKalrCol : any;
     onClose: () => void;
 };
 
-function DeleteTaskModal({ className, taskId, setSprint, onClose }: Props) {
+function DeleteTaskModal({ className, taskId, setKalrCol, onClose }: Props) {
     const [loading, setLoading] = useState(false);
 
     const deleteTask = async (e: FormEvent) => {
@@ -21,7 +23,7 @@ function DeleteTaskModal({ className, taskId, setSprint, onClose }: Props) {
 
         try {
             const res = await callApiPost(`${conf.backendUrl}/delete/task/delete-tasks`, { taskId });
-            setSprint(res?.data?.sprint);
+            setKalrCol(res?.data?.columns);
             console.log("Response at Delete Tasks ::", res);
             
             onClose();
@@ -35,7 +37,7 @@ function DeleteTaskModal({ className, taskId, setSprint, onClose }: Props) {
         <>
             <Dialog>
                 <DialogTrigger asChild>
-                    <Button className={className} variant="outline">Delete Task</Button>
+                    <Button className={className} variant="outline"><LucideDelete/></Button>
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-[425px]">
                     <DialogHeader>

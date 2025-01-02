@@ -47,13 +47,13 @@ function CreateSprintModal({ className, projectId }: Props) {
     <Dialog>
       <DialogTrigger asChild>
         <Button className={className} variant="outline">
-          Create Sprint
+          Create Session
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Create Sprint</DialogTitle>
-          <DialogDescription>Fill up details for your new sprint</DialogDescription>
+          <DialogTitle>Create Session</DialogTitle>
+          <DialogDescription>Fill up details for your new Session</DialogDescription>
         </DialogHeader>
         <form onSubmit={createSprint} className="grid gap-4 py-4">
           <div className="grid grid-cols-4 items-center gap-4">
@@ -92,7 +92,7 @@ function CreateSprintModal({ className, projectId }: Props) {
             />
           </div>
           <DialogFooter>
-            <Button type="submit">Add Sprint</Button>
+            <Button type="submit">Add Session</Button>
           </DialogFooter>
         </form>
       </DialogContent>
