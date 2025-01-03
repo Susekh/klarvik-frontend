@@ -15,7 +15,7 @@ function Home() {
       <div className="p-12 flex flex-wrap items-center justify-center gap-24">
         <div className="flex flex-col flex-wrap gap-12 justify-center text-center md:text-left md:justify-start">
           <h1 className="text-yellow-500 flex flex-col flex-wrap text-4xl md:text-6xl max-w-4xl font-extrabold">
-          smart mining helmets <span className="p-1 text-white max-w-64 mt-4 bg-yellow-800">Klarvik</span>
+          smart mining helmets <span className="p-1 text-white max-w-64 mt-4 bg-yellow-800">Klarvick</span>
           </h1>
           <p className="md:text-lg max-w-2xl text-yellow-800 dark:text-yellow-600">
           Streamline your team's workflow, collaborate seamlessly, and manage tasks ease. Empower your team to deliver results faster, track progress more effectively.
