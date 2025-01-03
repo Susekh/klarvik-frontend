@@ -27,7 +27,7 @@ function CreateTasksModal({ className, columnId, setSprint,setKalrCol, projectId
         
         e.preventDefault();
 
-        const res = await callApiPost(`${conf.backendUrl}/create/task/newTask`, {name, content, deadline, columnId, projectId});
+        const res = await callApiPost(`${conf.backendUrl}/create/task/newTask`, {name, content, deadline, columnId, projectId, helmetId : helmet });
         console.log("res from backend ::", res);
         
         setSprint(res?.data?.sprint);
@@ -98,7 +98,7 @@ function CreateTasksModal({ className, columnId, setSprint,setKalrCol, projectId
                 />
             </div>
             <DialogFooter>
-              <Button type="submit">Add item</Button>
+              <Button type="submit">Add Worker</Button>
             </DialogFooter>
           </form>
         </DialogContent>

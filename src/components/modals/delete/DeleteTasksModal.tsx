@@ -41,16 +41,16 @@ function DeleteTaskModal({ className, taskId, setKalrCol, onClose }: Props) {
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-[425px]">
                     <DialogHeader>
-                        <DialogTitle>Delete Task</DialogTitle>
+                        <DialogTitle>Remove Worker</DialogTitle>
                         <DialogDescription>
-                            Are you sure you want to delete this task? This action cannot be undone.
+                            Are you sure you want to remove this worker? This action cannot be undone.
                         </DialogDescription>
                     </DialogHeader>
                     <form onSubmit={deleteTask} className="grid gap-4 py-4">
                         <DialogFooter>
                             <Button type="button" variant="outline" onClick={onClose}>Cancel</Button>
                             <Button type="submit" isLoading={loading} variant="destructive">
-                                {loading ? "Deleting..." : "Delete Task"}
+                                {loading ? "Deleting..." : "Remove Worker"}
                             </Button>
                         </DialogFooter>
                     </form>

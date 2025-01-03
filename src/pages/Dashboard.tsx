@@ -39,20 +39,21 @@ function Dashboard() {
                     <CreateProjectModal className="bg-yellow-600 text-white mt-4 hover:bg-yellow-700"/>
                 </div>
             </div>
-            <div className="p-8 border-2 border-yellow-300 rounded-lg">
+            <div className="px-8 pb-8 border-2 border-yellow-300 rounded-lg">
+                <h2 className="px-4 py-1 mx-auto w-full">sessions</h2>
             {
                 user.userData?.projects && user.userData.projects.length > 0 ? (
                     user.userData.projects.map(project =>
                         project.sprints && project.sprints.length > 0 ? (
                             project.sprints.map(sprint => (
-                                <p key={sprint.id}>{sprint.name}</p>
+                                <p className="px-4 mt-2  hover:cursor-pointer hover:bg-yellow-100 py-2 bg-yellow-200 text-black rounded-md" key={sprint.id}>{sprint.name}</p>
                             ))
                         ) : (
-                            <p key={project.id}>No active sprints</p>
+                            <p key={project.id}>No active Session</p>
                         )
                     )
                 ) : (
-                    <p>No active sprints</p>
+                    <p>No active session</p>
                 )
             }
             </div>
